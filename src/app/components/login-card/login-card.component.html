@@ -1,0 +1,18 @@
+<div class="card mx-auto">
+    <div class="card-body">
+        <h4 class="card-title">Bounty Board</h4>
+        <form>
+            <div class="form-group">
+                <input #loginEmail type="email" class="form-control" (input)="checkEmail(loginEmail.value)" id="loginEmail" placeholder="Email">
+                <small id="loginEmailHelp" class="form-text text-danger">{{emailMessage$ | async}}</small>
+            </div>
+            <div class="form-group">
+                <input #loginPassword type="password" class="form-control" (input)="checkPassword(loginPassword.value)" id="loginPassword" placeholder="Password">
+                <small id="loginPasswordHelp" class="form-text text-danger">{{passwordMessage$ | async}}</small>
+                <small id="loginResponse" class="form-text text-danger">{{loginMessage}}</small>
+            </div>
+            <button type="button" (click)="logIn(loginEmail.value, loginPassword.value)" class="btn btn-primary">Log in</button>
+            <button type="button" (click)="createCard()" class="btn btn-link float-right">Create an account</button>
+        </form>
+    </div>
+</div>

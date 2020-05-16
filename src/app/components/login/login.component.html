@@ -1,0 +1,12 @@
+<div class="container d-flex h-100">
+    <div class="row justify-content-center align-self-center w-100">
+        <div class="col-6 mx-auto">
+            <div *ngIf="createAccount==false">
+                <app-login-card (hideCard)='createCard()'></app-login-card>
+            </div>
+            <div *ngIf="createAccount==true">
+               <app-create-user-card (hideCard)='logInCard()'></app-create-user-card>
+            </div>
+        </div>
+    </div>
+</div>
