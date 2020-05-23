@@ -1,0 +1,7 @@
+<div class="container">
+    <div *ngFor="let gameEvent of gameEvents">
+        <app-event-card
+            [gameEvent] = "gameEvent"
+        ></app-event-card>
+    </div>
+</div>

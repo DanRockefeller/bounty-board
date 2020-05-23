@@ -1,24 +1,25 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap, flatMap } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
+import {  map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { User } from '../models/user'
-import { Auth } from '../models/auth'
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private newUrl: string = 'https://localhost:8000/users/new'
-  private updateUrl: string = 'https://localhost:8000/users/update'
   private getUrl: string = 'https://localhost:8000/users/'
-  private meUrl: string = 'https://localhost:8000/users/me'
+  private listUrl: string = 'https://localhost:8000/users/'
+  private postUrl: string = 'https://localhost:8000/users/new' //TODO: Change server to make this url better
+  private updateUrl: string = 'https://localhost:8000/users/update'
+
   private searchUrl: string = 'https://localhost:8000/users/search'
+  private meUrl: string = 'https://localhost:8000/users/me'
 
   private httpOptions ={
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
-  }
+  };
 
   constructor(
     private authService: AuthService,
@@ -27,7 +28,7 @@ export class UserService {
 
   new(email: string, password: string): Observable<User> {
     return this.http
-    .post<User>(this.newUrl, {email: email, password: password}, this.httpOptions)
+    .post<User>(this.postUrl, {email: email, password: password}, this.httpOptions)
     .pipe(
       map(user => {
         return user
